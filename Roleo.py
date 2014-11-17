@@ -1,3 +1,3 @@
 __author__ = 'RolandR'
 
-#mine perse
+a = input("Sisesta siia luuletus või laul, mida sa õppida tahad")
