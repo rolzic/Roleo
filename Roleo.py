@@ -21,6 +21,8 @@ a = a.split("\n")
 k = 0
 while True:
     b = input("Sisesta " + str(k+1)+ " " + "rida: ")
+    b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
+    .replace("(","").replace(")","").replace("-","").replace(";","")
     if a[k].lower() == b.lower():
         b = ""
         k += 1
