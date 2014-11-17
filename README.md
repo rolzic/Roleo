@@ -6,3 +6,4 @@ Meie oleme ambitsioonikad Tartu Ülikooli informaatika tudengid, kellel sära si
 Nõustun eelmise reaga...
 Toimib???
 fuga shnuuru schnell und laufen
+ma sul teen
