@@ -1,7 +1,6 @@
-__author__ = 'RolandR'
-
+nimi = input("Mis on sinu nimi? ")
 print("Sisesta siia laul või luuletus: ")
-print("Ja siis vajuta kaks korda enterit")
+print("Kui saad luuletuse sisestatud, vajuta kaks korda enter")
 
 buffer = []
 while True:
@@ -10,13 +9,8 @@ while True:
         break
     buffer.append(line)
 a = "\n".join(buffer)
-print("You entered...")
-print(a)
 
 
-
-
-nimi = input("Mis on sinu nimi?: ")
 
 
 a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
@@ -26,14 +20,16 @@ a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
 a = a.split("\n")
 k = 0
 while True:
-    b = input("Pane: ")
-    if a[k] == b:
+    b = input("Sisesta " + str(k+1)+ " " + "rida: ")
+    if a[k].lower() == b.lower():
         b = ""
         k += 1
         if k == len(a):
-            print("hästi tehtud,", nimi)
+            print("Hästi tehtud,", nimi)
             break
-        print("Well done")
+        print("Tubli!")
     else:
-        print("fk you")
+        print("Vale")
+        print("Õige on:",a[k])
+        print("Ära muretse, proovi uuesti")
         k = k
