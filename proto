@@ -1,0 +1,31 @@
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+import sys
+
+def luuletus():
+    a = t.get(1.0,END)
+    print(a.strip())
+    raam.destroy()
+    def luuletus2():
+        b = c.get(1.0,END)
+        print(b.strip())
+        raam2.destroy()
+        if a == b:
+            print("True")
+    raam2 = Tk()
+    raam2.title("Pere sissetulek2")
+    raam2.geometry("300x350")
+    nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
+    c = Text(raam2, width=30,height=10)
+    c.place(x=30,y=30)
+    
+
+raam = Tk()
+raam.title("Pere sissetulek")
+raam.geometry("300x350")
+nupp = Button(raam,text = "OK",command = luuletus, fg="red",bg="blue").pack()
+t = Text(raam, width=30,height=10)
+t.place(x=30,y=30)
+
+
