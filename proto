@@ -6,23 +6,36 @@ import sys
 def luuletus():
     a = t.get(1.0,END)
     a = str(a.strip())
+    a = a.split("\n")
+    print(a)
     raam.destroy()
     def luuletus2():
         b = c.get()
         b = str(b.strip())
-        raam2.destroy()
-        print(a)
         print(b)
-        if a == b:
-            print("True")
+        if a[i] == b:
+            messagebox.showinfo(message="Väga tubli")
+            c.delete(0, END)
+            i+=1
         else:
-            print("False")
+            messagebox.showinfo(message="Läks valesti, aga pole hullu")
+            c.delete(0, END)
     raam2 = Tk()
-    raam2.title("Pere sissetulek2")
+    raam2.title("Luuletuse meeldejätmine")
     raam2.geometry("300x350")
     nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
     c = Entry(raam2)
     c.pack()
+
+    
+
+raam = Tk()
+raam.title("Luuletuse sisestamine")
+raam.geometry("300x350")
+nupp = Button(raam,text = "OK",command = luuletus, fg="red",bg="blue").pack()
+t = Text(raam, width=30,height=10)
+t.place(x=30,y=30)
+
 
     
 
