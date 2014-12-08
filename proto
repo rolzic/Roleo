@@ -5,42 +5,34 @@ import sys
 
 def luuletus():
     a = t.get(1.0,END)
-    print(a.strip())
+    a = str(a.strip())
     raam.destroy()
     def luuletus2():
-        b = c.get(1.0,END)
-        print(b.strip())
+        b = c.get()
+        b = str(b.strip())
         raam2.destroy()
+        print(a)
+        print(b)
         if a == b:
             print("True")
+        else:
+            print("False")
     raam2 = Tk()
-    raam2.title("Luuletus 2")
-    raam2.geometry("800x600")
-    nupp2 = Button(raam2,text = "Sisesta luuletus",command = luuletus2, fg="black",bg="SkyBlue").pack()
-    c = Text(raam2, width=40,height=20)
-    c.place(x=400,y=30)
-    photo3 = PhotoImage(file='rabbit.gif')
-    label3= Label(raam2, image=photo3)
-    label3.place(x=320, y=400)
+    raam2.title("Pere sissetulek2")
+    raam2.geometry("300x350")
+    nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
+    c = Entry(raam2)
+    c.pack()
 
-
+    
 
 raam = Tk()
-raam.title("Roleo")
-raam.geometry("800x800")
-nupp = ttk.Button(raam,text = "OK",command = luuletus)
-nupp.place(x=400, y=370, width=70)
-t = Text(raam, width=40,height=20)
-t.place(x=400,y=30)
+raam.title("Pere sissetulek")
+raam.geometry("300x350")
+nupp = Button(raam,text = "OK",command = luuletus, fg="red",bg="blue").pack()
+t = Text(raam, width=30,height=10)
+t.place(x=30,y=30)
 
-photo = PhotoImage(file='pilt2.gif')
-label= Label(raam, image=photo)
-label.place(x=30, y=20)
-photo2 = PhotoImage(file='pilt3.gif')
-label2= Label(raam, image=photo2)
-label2.place(x=320, y=400)
-s = ttk.Style()
-s.theme_use("vista")
-raam.mainloop()
+
 
 
