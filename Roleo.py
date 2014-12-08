@@ -35,6 +35,8 @@ k = 0
 while True:
 <<<<<<< Updated upstream
     b = input("Sisesta " + str(k+1)+ " " + "rida: ")
+    b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
+    .replace("(","").replace(")","").replace("-","").replace(";","")
     if a[k].lower() == b.lower():
 =======
     b = input("Sisesta 1. luulerida: ")
