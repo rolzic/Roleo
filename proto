@@ -25,9 +25,8 @@ def luuletus():
             messagebox.showinfo(message="Väga tubli")
             c.delete(0, END)
             if i+1 == len(a):
-                raam2.destroy()
                 messagebox.showinfo(message="Tegite vigu: " + str(j))
-                tk.destroy()
+                raam2.destroy()
             else:
                 i+=1
         else:
