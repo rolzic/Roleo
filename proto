@@ -1,3 +1,4 @@
+from timeit import default_timer as timer
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -13,6 +14,7 @@ def luuletus():
     print(a)
     raam.destroy()
     def luuletus2():
+
         global i
         global j
         b = c.get()
@@ -25,8 +27,10 @@ def luuletus():
             messagebox.showinfo(message="Väga tubli")
             c.delete(0, END)
             if i+1 == len(a):
-                messagebox.showinfo(message="Tegite vigu: " + str(j))
+                end = timer()
+                messagebox.showinfo(message="Tegite vigu: " + str(j) + "." + " Sul läks aega  " + str(round(end - start, 2)) + " sekundit.")
                 raam2.destroy()
+
             else:
                 i+=1
         else:
@@ -37,6 +41,7 @@ def luuletus():
     raam2.title("Luuletuse meeldejätmine")
     raam2.geometry("300x350")
     nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
+    start = timer()
     c = Entry(raam2)
     c.pack()
 
