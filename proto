@@ -6,21 +6,34 @@ import sys
 def luuletus():
     a = t.get(1.0,END)
     a = str(a.strip())
+    a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
+    .replace("(","").replace(")","").replace("-","").replace(";","")
+    a = a.lower()
     a = a.split("\n")
     print(a)
     raam.destroy()
     def luuletus2():
         global i
+        global j
         b = c.get()
         b = str(b.strip())
+        b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
+        .replace("(","").replace(")","").replace("-","").replace(";","")
+        b = b.lower()
         print(b)
         if a[i] == b:
             messagebox.showinfo(message="Väga tubli")
             c.delete(0, END)
-            i+=1
+            if i+1 == len(a):
+                raam2.destroy()
+                messagebox.showinfo(message="Tegite vigu: " + str(j))
+                tk.destroy()
+            else:
+                i+=1
         else:
-            messagebox.showinfo(message="Läks valesti, aga pole hullu")
+            messagebox.showinfo(message="Läks valesti, aga pole hullu,proovime uuesti!")
             c.delete(0, END)
+            j += 1
     raam2 = Tk()
     raam2.title("Luuletuse meeldejätmine")
     raam2.geometry("300x350")
@@ -29,6 +42,7 @@ def luuletus():
     c.pack()
 
 i = 0
+j = 0
 raam = Tk()
 raam.title("Luuletuse sisestamine")
 raam.geometry("300x350")
