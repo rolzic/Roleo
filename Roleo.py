@@ -2,65 +2,81 @@ from timeit import default_timer as timer
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-from tkinter import font
+import sys
 
-
-def roleo():
-    nimi = input("Mis on sinu nimi? ")
-    print("Sisesta siia laul või luuletus: ")
-    print("Kui saad luuletuse sisestatud, vajuta kaks korda ENTERIT")
-
-
-
-
-    buffer = []
-    while True:
-        line = input()
-        if line == "":
-            break
-        buffer.append(line)
-    a = "\n".join(buffer)
-
-
-
-
+def luuletus():
+    a = t.get(1.0,END)
+    a = str(a.strip())
     a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
-        .replace("(","").replace(")","").replace("-","").replace(";","")
-
-    start = timer()
+    .replace("(","").replace(")","").replace("-","").replace(";","")
+    a = a.lower()
     a = a.split("\n")
-    k = 0
-    while True:
-        b = input("Sisesta " + str(k+1)+ " " + "rida: ")
+    print(a)
+    raam.destroy()
+    def luuletus2():
+
+        global i
+        global j
+        b = c.get()
+        b = str(b.strip())
         b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
         .replace("(","").replace(")","").replace("-","").replace(";","")
-        if a[k].lower() == b.lower():
-            b = ""
-            k += 1
-            if k == len(a):
-                print("Hästi tehtud,", nimi)
-                break
-            print("Tubli!")
+        b = b.lower()
+        print(b)
+        if a[i] == b:
+            messagebox.showinfo(message="Väga tubli")
+            c.delete(0, END)
+            if i+1 == len(a):
+                end = timer()
+                messagebox.showinfo(message="Vigade arv: " + str(j) + "." \
+                + " Sul läks aega  " + str(round(end - start, 2)) + " sekundit.")
+                raam2.destroy()
+
+            else:
+                i+=1
         else:
-            print("Vale")
-            print("Õige on:",a[k])
-            print("Proovi uuesti")
-            k = k
-    end = timer()
-    print("Sul läks aega " + str(round(end - start, 2)) + " sekundit")
+            messagebox.showinfo(message="Läks valesti, aga pole hullu,proovime uuesti!")
+            c.delete(0, END)
+            j += 1
+    raam2 = Tk()
+    raam2.title("Luuletuse meeldejätmine")
+    tahvel = Canvas(raam2, width=600, height=600, background="black")
+    tahvel.grid()
+    nupp2 = Button(tahvel,text = "OK",command = luuletus2, fg="black",bg="SkyBlue").pack()
+    c = Entry(tahvel)
+    c.pack()
+    start = timer()
 
+
+i = 0
+j = 0
+
+#Esimene raam
 raam = Tk()
-raam.title("Roleo")
-tahvel = Canvas(raam, width=1000, height=1000, background="SkyBlue")
-tahvel.grid()
+raam.title("Luuletuse sisestamine")
+raam.geometry("800x800")
 
-suur_font = font.Font(family='Helvetica', size=32, weight='bold')
-tahvel.create_text(30, 500, text="Oled valmis luuletust õppima?", font=suur_font, anchor=NW)
+#Esimese raami nupp
+nupp = ttk.Button(raam,text = "OK",command = luuletus)
+nupp.place(x=400, y=370, width=70)
 
-nupp = ttk.Button(raam, text="Alusta luuletuse õppimist!", command=roleo)
-nupp.place(x=70, y=40, width=150)
+#Esimese raami tekstikast
+t = Text(raam, width=40,height=20)
+t.place(x=400,y=30)
 
+#Käsnakalle foto
+photo = PhotoImage(file='pilt2.gif')
+label= Label(raam, image=photo)
+label.place(x=30, y=20)
 
+#Jutumull
+photo2 = PhotoImage(file='pilt3.gif')
+label2= Label(raam, image=photo2)
+label2.place(x=320, y=400)
+
+#Nupu style
+s = ttk.Style()
+s.theme_use("vista")
 raam.mainloop()
 
 
