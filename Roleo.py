@@ -123,16 +123,18 @@ def män():
             esimene = esimene.lower()
             print(esimene)
             if a[i_m1] == esimene:
-                messagebox.showinfo(message="Väga tubli")
+                messagebox.showinfo(message="Õigesti")
                 c.delete(0, END)
                 if i_m1+1 == len(a):
                     end1 = timer()
                     h = str(round(end1 - start1, 2))
-                    messagebox.showinfo(message="Vigade arv: " + str(j_m1) + "." + " Sul läks aega " + h + " sekundit.")
+                    messagebox.showinfo(message="Vigade arv: " + str(j_m1) + "." + " Tegite läks aega " + h + " sekundit.")
                     raam2.destroy()
                     f = open(player1 + "_1player" + ".txt","w")
                     f.write("Vigu: " + str(j_m1) + "\n")
                     f.write("Läks aega: " +h + "\n")
+                    f.write("Tekst: " + "\n")
+                    f.write("\n".join(a))
                     f.close()
                     def luuletus3():
                         global i_m2
@@ -146,50 +148,69 @@ def män():
                         teine = teine.lower()
                         print(teine)
                         if a[i_m2] == teine:
-                            messagebox.showinfo(message="Väga tubli")
+                            messagebox.showinfo(message="Õigesti")
                             z.delete(0, END)
                             if i_m2+1 == len(a):
                                 end2 = timer()
                                 x = str(round(end2 - start2, 2))
-                                messagebox.showinfo(message="Tegite vigu: " + str(j_m2) + "." + " Sul läks aega " + x + " sekundit.")
+                                messagebox.showinfo(message="Vigade arv: " + str(j_m2) + "." + " Teil läks aega " + x + " sekundit.")
                                 f = open(player2 +"_2player" + ".txt","w")
                                 f.write("Vigu: " + str(j_m2) + "\n")
                                 f.write("Läks aega: " +x + "\n")
+                                f.write("Tekst: " + "\n")
+                                f.write("\n".join(a))
                                 f.close()
                                 if x < h:
-                                    messagebox.showinfo(message="2. mängija oli kiirem")
+                                    messagebox.showinfo(message= player2 + " " +  "oli kiirem")
                                 elif x ==h:
                                     messagebox.showinfo(message="Mõlemad mängijad olid sama kiired")
                                 else:
-                                    messagebox.showinfo(message="1. mängija oli kiirem")
+                                    messagebox.showinfo(message=player1 + " " +  "oli kiirem")
                                 if j_m1 > j_m2:
-                                    messagebox.showinfo(message="1. mängijal on rohkem vigu")
+                                    messagebox.showinfo(message="Võitis: " + player2)
                                     raam3.destroy()
                                 elif j_m1 == j_m2:
-                                    messagebox.showinfo(message="Mõlemal oli sama palju vigu")
+                                    messagebox.showinfo(message="Jäite viiki")
                                     raam3.destroy()
                                 else:
-                                    messagebox.showinfo(message="1. mängijal on vähem vigu")
+                                    messagebox.showinfo(message="Võitis: " + player1)
                                     raam3.destroy()
                             else:
                                 i_m2+=1
-                                g_m2 = 0
-                                uus_m2 = []
                         else:
-                            lisa2 = a[i_m2].split()
-                            pikkus = len(lisa2)
-                            if g_m2+1 == len(lisa2):
-                                messagebox.showinfo(message="Siin on sinu rida, proovi see meelde jätta: " + str(a[i_m2]))
-                                z.delete(0, END)
-                                j_m2 += 1
-                                g_m2 = g_m2
+                            if i_m2+1 == len(a):
+                                j_m2 +=1
+                                messagebox.showinfo(message="Valesti")
+                                end2 = timer()
+                                x = str(round(end2 - start2, 2))
+                                messagebox.showinfo(message="Vigade arv: " + str(j_m2) + "." + " Teil läks aega " + x + " sekundit.")
+                                f = open(player2 + "_2player" + ".txt","w")
+                                f.write("Vigu: " + str(j_m2) + "\n")
+                                f.write("Läks aega: " +x + "\n")
+                                f.write("Tekst: " + "\n")
+                                f.write("\n".join(a))
+                                f.close()
+                                if x < h:
+                                    messagebox.showinfo(message= player2 + " " +  "oli kiirem")
+                                elif x ==h:
+                                    messagebox.showinfo(message="Mõlemad mängijad olid sama kiired")
+                                else:
+                                    messagebox.showinfo(message=player1 + " " +  "oli kiirem")
+                                if j_m1 > j_m2:
+                                    messagebox.showinfo(message="Võitis: " + player2)
+                                    raam3.destroy()
+                                elif j_m1 == j_m2:
+                                    messagebox.showinfo(message="Jäite viiki")
+                                    raam3.destroy()
+                                else:
+                                    messagebox.showinfo(message="Võitis: " + player1)
+                                    raam3.destroy()
                             else:
-                                uus_m2 += [lisa2[g_m2]]
-                                messagebox.showinfo(message="Läks valesti, aga pole hullu. Proovi uuesti!")
-                                messagebox.showinfo(message="Siin on väike vihje: " + str(" ".join(uus_m2)))
+                                messagebox.showinfo(message="Valesti")
                                 z.delete(0, END)
-                                j_m2 += 1
-                                g_m2 +=1
+                                j_m2 +=1
+                                i_m2 +=1
+                            
                     raam3 = Tk()
                     raam3.title("2. player")
                     raam3.bind("<Return>", lambda event: luuletus3())
@@ -207,23 +228,116 @@ def män():
                     raam3.mainloop()
                 else:
                     i_m1+=1
-                    g_m1 = 0
-                    uus_m1 = []
             else:
-                lisa = a[i_m1].split()
-                pikkus = len(lisa)
-                if g_m1+1 == len(lisa):
-                    messagebox.showinfo(message="Siin on sinu rida, proovi see meelde jätta: " + str(a[i_m1]))
-                    c.delete(0, END)
-                    j_m1 += 1
-                    g_m1 = g_m1
+                if i_m1+1 == len(a):
+                    j_m1 +=1
+                    messagebox.showinfo(message="Valesti")
+                    end1 = timer()
+                    h = str(round(end1 - start1, 2))
+                    messagebox.showinfo(message="Vigade arv: " + str(j_m1) + "." + " Tegite läks aega " + h + " sekundit.")
+                    raam2.destroy()
+                    f = open(player1 + "_1player" + ".txt","w")
+                    f.write("Vigu: " + str(j_m1) + "\n")
+                    f.write("Läks aega: " +h + "\n")
+                    f.write("Tekst: " + "\n")
+                    f.write("\n".join(a))
+                    f.close()
+                    def luuletus3():
+                        global i_m2
+                        global j_m2
+                        global g_m2
+                        global uus_m2
+                        teine = z.get()
+                        teine = str(teine.strip())
+                        teine = teine.replace(",","").replace(".","").replace("!","").replace(":","")\
+                        .replace("(","").replace(")","").replace("-","").replace(";","")
+                        teine = teine.lower()
+                        print(teine)
+                        if a[i_m2] == teine:
+                            messagebox.showinfo(message="Õigesti")
+                            z.delete(0, END)
+                            if i_m2+1 == len(a):
+                                end2 = timer()
+                                x = str(round(end2 - start2, 2))
+                                messagebox.showinfo(message="Vigade arv: " + str(j_m2) + "." + " Teil läks aega " + x + " sekundit.")
+                                f = open(player2 +"_2player" + ".txt","w")
+                                f.write("Vigu: " + str(j_m2) + "\n")
+                                f.write("Läks aega: " +x + "\n")
+                                f.write("Tekst: " + "\n")
+                                f.write("\n".join(a))
+                                f.close()
+                                if x < h:
+                                    messagebox.showinfo(message= player2 + " " +  "oli kiirem")
+                                elif x ==h:
+                                    messagebox.showinfo(message="Mõlemad mängijad olid sama kiired")
+                                else:
+                                    messagebox.showinfo(message=player1 + " " +  "oli kiirem")
+                                if j_m1 > j_m2:
+                                    messagebox.showinfo(message="Võitis: " + player2)
+                                    raam3.destroy()
+                                elif j_m1 == j_m2:
+                                    messagebox.showinfo(message="Jäite viiki")
+                                    raam3.destroy()
+                                else:
+                                    messagebox.showinfo(message="Võitis: " + player1)
+                                    raam3.destroy()
+                            else:
+                                i_m2+=1
+                        else:
+                            if i_m2+1 == len(a):
+                                j_m2 +=1
+                                messagebox.showinfo(message="Valesti")
+                                end2 = timer()
+                                x = str(round(end2 - start2, 2))
+                                messagebox.showinfo(message="Vigade arv: " + str(j_m2) + "." + " Tegite läks aega " + x + " sekundit.")
+                                f = open(player2 + "_2player" + ".txt","w")
+                                f.write("Vigu: " + str(j_m2) + "\n")
+                                f.write("Läks aega: " +x + "\n")
+                                f.write("Tekst: " + "\n")
+                                f.write("\n".join(a))
+                                f.close()
+                                if x < h:
+                                    messagebox.showinfo(message= player2 + " " +  "oli kiirem")
+                                elif x ==h:
+                                    messagebox.showinfo(message="Mõlemad mängijad olid sama kiired")
+                                else:
+                                    messagebox.showinfo(message=player1 + " " +  "oli kiirem")
+                                if j_m1 > j_m2:
+                                    messagebox.showinfo(message="Võitis: " + player2)
+                                    raam3.destroy()
+                                elif j_m1 == j_m2:
+                                    messagebox.showinfo(message="Jäite viiki")
+                                    raam3.destroy()
+                                else:
+                                    messagebox.showinfo(message="Võitis: " + player1)
+                                    raam3.destroy()
+                            else:
+                                messagebox.showinfo(message="Valesti")
+                                z.delete(0, END)
+                                j_m2 +=1
+                                i_m2 +=1
+                    raam3 = Tk()
+                    raam3.title("2. player")
+                    raam3.bind("<Return>", lambda event: luuletus3())
+                    tahvel4 = Canvas(raam3, width=300, height=500)
+                    tahvel4.grid()
+                    nupp3 = ttk.Button(tahvel4,text = "OK",command = luuletus3)
+                    nupp3.place(x=30,y=60)
+                    start2 = timer()
+                    z = Entry(tahvel4)
+                    z.pack()
+                    z.place(x=30,y=30,width=240)
+                    player2foto = PhotoImage(file="player2.gif")
+                    img3 = tahvel4.create_image(160, 300, image=player2foto)
+                    tahvel4.pack()
+                    raam3.mainloop()
+                            
                 else:
-                    uus_m1 += [lisa[g_m1]]
-                    messagebox.showinfo(message="Läks valesti, aga pole hullu. Proovi uuesti!")
-                    messagebox.showinfo(message="Siin on väike vihje: " + str(" ".join(uus_m1)))
+                    messagebox.showinfo(message="Valesti")
                     c.delete(0, END)
-                    j_m1 += 1
-                    g_m1 +=1
+                    j_m1 +=1
+                    i_m1 +=1
+
         raam2 = Tk()
         raam2.title("1. player")
         raam2.bind("<Return>", lambda event: luuletus2())
@@ -270,12 +384,8 @@ uus_e =  []
 g_e = 0
 i_e = 0
 j_e = 0
-uus_m1 =  []
-g_m1 = 0
 i_m1 = 0
 j_m1 = 0
-uus_m2 =  []
-g_m2 = 0
 i_m2 = 0
 j_m2 = 0
 valik = Tk()
@@ -292,5 +402,4 @@ mäng.place(x=90,y=150)
 photo = PhotoImage(file='mustpilt.gif')
 label= Label(tahvel, image=photo, background="black")
 label.place(x=240, y=2)
-
 
