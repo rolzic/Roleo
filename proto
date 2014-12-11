@@ -17,7 +17,6 @@ def õp():
         print(nimi)
         raam.destroy()
         def luuletus2():
-
             global i_e
             global j_e
             global g_e
@@ -40,8 +39,6 @@ def õp():
                     f.write("Vigu: " + str(j_e) + "\n")
                     f.write("Läks aega: " +h + "\n")
                     f.close()
-                    
-
                 else:
                     i_e+=1
                     g_e = 0
@@ -134,17 +131,25 @@ def män():
                                 end2 = timer()
                                 x = str(round(end2 - start2, 2))
                                 messagebox.showinfo(message="Tegite vigu: " + str(j_m2) + "." + " Sul läks aega " + x + " sekundit.")
-                                raam3.destroy()
                                 f = open(player2 + ".txt","w")
                                 f.write("Vigu: " + str(j_m2) + "\n")
                                 f.write("Läks aega: " +x + "\n")
                                 f.close()
                                 if x > h:
-                                    print("player2 win")
+                                    messagebox.showinfo(message="2 mängija oli kiirem")
                                 elif x ==h:
-                                    print("võrdne")
+                                    messagebox.showinfo(message="Sama kiired")
                                 else:
-                                    print("player1 win")
+                                    messagebox.showinfo(message="1 mängija oli kiirem")
+                                if j_m1 > j_m2:
+                                    messagebox.showinfo(message="1 mängijal on rohkem vigu")
+                                    raam3.destroy()
+                                elif j_m1 == j_m2:
+                                    messagebox.showinfo(message="Mõlemal oli sama palju vigu")
+                                    raam3.destroy()
+                                else:
+                                    messagebox.showinfo(message="1 mängijal on vähem vigu")
+                                    raam3.destroy()          
                             else:
                                 i_m2+=1
                                 g_m2 = 0
