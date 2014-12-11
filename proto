@@ -33,11 +33,13 @@ def õp():
                 if i_e+1 == len(a):
                     end = timer()
                     h = str(round(end - start, 2))
-                    messagebox.showinfo(message="Tegite vigu: " + str(j) + "." + " Sul läks aega: " + h + " sekundit.")
+                    messagebox.showinfo(message="Tegite vigu: " + str(j_e) + "." + " Sul läks aega: " + h + " sekundit.")
                     raam2.destroy()
-                    f = open(nimi + ".txt","w")
+                    f = open(nimi +"_educational" + ".txt","w")
                     f.write("Vigu: " + str(j_e) + "\n")
                     f.write("Läks aega: " +h + "\n")
+                    f.write("Tekst: " + "\n")
+                    f.write("\n".join(a))
                     f.close()
                 else:
                     i_e+=1
@@ -61,6 +63,7 @@ def õp():
         raam2 = Tk()
         raam2.title("Luuletuse meeldejätmine")
         raam2.geometry("300x350")
+        raam2.bind("<Return>", lambda event: luuletus2())
         nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
         start = timer()
         c = Entry(raam2)
@@ -109,7 +112,7 @@ def män():
                     h = str(round(end1 - start1, 2))
                     messagebox.showinfo(message="Tegite vigu: " + str(j_m1) + "." + " Sul läks aega " + h + " sekundit.")
                     raam2.destroy()
-                    f = open(player1 + ".txt","w")
+                    f = open(player1 + "_1player" + ".txt","w")
                     f.write("Vigu: " + str(j_m1) + "\n")
                     f.write("Läks aega: " +h + "\n")
                     f.close()
@@ -131,11 +134,11 @@ def män():
                                 end2 = timer()
                                 x = str(round(end2 - start2, 2))
                                 messagebox.showinfo(message="Tegite vigu: " + str(j_m2) + "." + " Sul läks aega " + x + " sekundit.")
-                                f = open(player2 + ".txt","w")
+                                f = open(player2 +"_2player" + ".txt","w")
                                 f.write("Vigu: " + str(j_m2) + "\n")
                                 f.write("Läks aega: " +x + "\n")
                                 f.close()
-                                if x > h:
+                                if x < h:
                                     messagebox.showinfo(message="2 mängija oli kiirem")
                                 elif x ==h:
                                     messagebox.showinfo(message="Sama kiired")
@@ -172,6 +175,7 @@ def män():
                     raam3 = Tk()
                     raam3.title("2 player")
                     raam3.geometry("300x350")
+                    raam3.bind("<Return>", lambda event: luuletus3())
                     nupp3 = Button(raam3,text = "OK",command = luuletus3, fg="red",bg="blue")
                     nupp3.pack()
                     start2 = timer()
@@ -199,6 +203,7 @@ def män():
         raam2 = Tk()
         raam2.title("1 player")
         raam2.geometry("300x350")
+        raam2.bind("<Return>", lambda event: luuletus2())
         nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
         start1 = timer()
         c = Entry(raam2)
