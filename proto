@@ -3,81 +3,234 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import sys
-
-def luuletus():
-    nimi = d.get()
-    a = t.get(1.0,END)
-    a = str(a.strip())
-    a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
-    .replace("(","").replace(")","").replace("-","").replace(";","")
-    a = a.lower()
-    a = a.split("\n")
-    print(a)
-    print(nimi)
-    raam.destroy()
-    def luuletus2():
-
-        global i
-        global j
-        global g
-        global uus
-        b = c.get()
-        b = str(b.strip())
-        b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
+def õp():
+    valik.destroy()
+    def luuletus():
+        nimi = d.get()
+        a = t.get(1.0,END)
+        a = str(a.strip())
+        a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
         .replace("(","").replace(")","").replace("-","").replace(";","")
-        b = b.lower()
-        print(b)
-        if a[i] == b:
-            messagebox.showinfo(message="Väga tubli")
-            c.delete(0, END)
-            if i+1 == len(a):
-                end = timer()
-                h = str(round(end - start, 2))
-                messagebox.showinfo(message="Tegite vigu: " + str(j) + "." + " Sul läks aega " + h + " sekundit.")
-                raam2.destroy()
-                f = open(nimi + ".txt","w")
-                f.write("Vigu: " + str(j) + "\n")
-                f.write("Läks aega: " +h + "\n")
-                f.close()
-                
+        a = a.lower()
+        a = a.split("\n")
+        print(a)
+        print(nimi)
+        raam.destroy()
+        def luuletus2():
 
-            else:
-                i+=1
-                g = 0
-                uus = []
-        else:
-            lisa = a[i].split()
-            pikkus = len(lisa)
-            if g+1 == len(lisa):
-                messagebox.showinfo(message="Siin on sinu rida, proovi see meelde jätta: " + str(a[i]))
+            global i_e
+            global j_e
+            global g_e
+            global uus_e
+            b = c.get()
+            b = str(b.strip())
+            b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
+            .replace("(","").replace(")","").replace("-","").replace(";","")
+            b = b.lower()
+            print(b)
+            if a[i_e] == b:
+                messagebox.showinfo(message="Väga tubli")
                 c.delete(0, END)
-                j += 1
-                g = g
-            else:
-                uus += [lisa[g]]
-                messagebox.showinfo(message="Läks valesti, aga pole hullu. Proovi uuesti!")
-                messagebox.showinfo(message="Siin on väike vihje: " + str(" ".join(uus)))
-                c.delete(0, END)
-                j += 1
-                g +=1
-    raam2 = Tk()
-    raam2.title("Luuletuse meeldejätmine")
-    raam2.geometry("300x350")
-    nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
-    start = timer()
-    c = Entry(raam2)
-    c.pack()
+                if i_e+1 == len(a):
+                    end = timer()
+                    h = str(round(end - start, 2))
+                    messagebox.showinfo(message="Tegite vigu: " + str(j) + "." + " Sul läks aega: " + h + " sekundit.")
+                    raam2.destroy()
+                    f = open(nimi + ".txt","w")
+                    f.write("Vigu: " + str(j_e) + "\n")
+                    f.write("Läks aega: " +h + "\n")
+                    f.close()
+                    
 
-uus =  []
-g = 0
-i = 0
-j = 0
-raam = Tk()
-raam.title("Luuletuse sisestamine")
-raam.geometry("300x350")
-nupp = Button(raam,text = "OK",command = luuletus, fg="red",bg="blue").pack()
-d = Entry(raam)
-d.pack()
-d.place(x = 90,y=50)
-t = Text(raam, width=30,height=10)
-t.place(x=30,y=80)
+                else:
+                    i_e+=1
+                    g_e = 0
+                    uus_e = []
+            else:
+                lisa = a[i_e].split()
+                pikkus = len(lisa)
+                if g_e+1 == len(lisa):
+                    messagebox.showinfo(message="Siin on sinu rida, proovi see meelde jätta: " + str(a[i_e]))
+                    c.delete(0, END)
+                    j_e += 1
+                    g_e = g_e
+                else:
+                    uus_e += [lisa[g_e]]
+                    messagebox.showinfo(message="Läks valesti, aga pole hullu. Proovi uuesti!")
+                    messagebox.showinfo(message="Siin on väike vihje: " + str(" ".join(uus_e)))
+                    c.delete(0, END)
+                    j_e += 1
+                    g_e +=1
+        raam2 = Tk()
+        raam2.title("Luuletuse meeldejätmine")
+        raam2.geometry("300x350")
+        nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
+        start = timer()
+        c = Entry(raam2)
+        c.pack()
+
+
+    raam = Tk()
+    raam.title("Luuletuse sisestamine")
+    raam.geometry("300x350")
+    nupp = Button(raam,text = "OK",command = luuletus, fg="red",bg="blue").pack()
+    d = Entry(raam)
+    d.pack()
+    d.place(x = 90,y=50)
+    t = Text(raam, width=30,height=10)
+    t.place(x=30,y=80)
+
+def män():
+    valik.destroy()
+    def luuletus():
+        player1 = d.get()
+        player2 = v.get()
+        a = t.get(1.0,END)
+        a = str(a.strip())
+        a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
+        .replace("(","").replace(")","").replace("-","").replace(";","")
+        a = a.lower()
+        a = a.split("\n")
+        print(a)
+        raam.destroy()
+        def luuletus2():
+            global i_m1
+            global j_m1
+            global g_m1
+            global uus_m1
+            esimene = c.get()
+            esimene = str(esimene.strip())
+            esimene = esimene.replace(",","").replace(".","").replace("!","").replace(":","")\
+            .replace("(","").replace(")","").replace("-","").replace(";","")
+            esimene = esimene.lower()
+            print(esimene)
+            if a[i_m1] == esimene:
+                messagebox.showinfo(message="Väga tubli")
+                c.delete(0, END)
+                if i_m1+1 == len(a):
+                    end1 = timer()
+                    h = str(round(end1 - start1, 2))
+                    messagebox.showinfo(message="Tegite vigu: " + str(j_m1) + "." + " Sul läks aega " + h + " sekundit.")
+                    raam2.destroy()
+                    f = open(player1 + ".txt","w")
+                    f.write("Vigu: " + str(j_m1) + "\n")
+                    f.write("Läks aega: " +h + "\n")
+                    f.close()
+                    def luuletus3():
+                        global i_m2
+                        global j_m2
+                        global g_m2
+                        global uus_m2
+                        teine = z.get()
+                        teine = str(teine.strip())
+                        teine = teine.replace(",","").replace(".","").replace("!","").replace(":","")\
+                        .replace("(","").replace(")","").replace("-","").replace(";","")
+                        teine = teine.lower()
+                        print(teine)
+                        if a[i_m2] == teine:
+                            messagebox.showinfo(message="Väga tubli")
+                            z.delete(0, END)
+                            if i_m2+1 == len(a):
+                                end2 = timer()
+                                x = str(round(end2 - start2, 2))
+                                messagebox.showinfo(message="Tegite vigu: " + str(j_m2) + "." + " Sul läks aega " + x + " sekundit.")
+                                raam3.destroy()
+                                f = open(player2 + ".txt","w")
+                                f.write("Vigu: " + str(j_m2) + "\n")
+                                f.write("Läks aega: " +x + "\n")
+                                f.close()
+                                if x > h:
+                                    print("player2 win")
+                                elif x ==h:
+                                    print("võrdne")
+                                else:
+                                    print("player1 win")
+                            else:
+                                i_m2+=1
+                                g_m2 = 0
+                                uus_m2 = []
+                        else:
+                            lisa2 = a[i_m2].split()
+                            pikkus = len(lisa2)
+                            if g_m2+1 == len(lisa2):
+                                messagebox.showinfo(message="Siin on sinu rida, proovi see meelde jätta: " + str(a[i_m2]))
+                                z.delete(0, END)
+                                j_m2 += 1
+                                g_m2 = g_m2
+                            else:
+                                uus_m2 += [lisa2[g_m2]]
+                                messagebox.showinfo(message="Läks valesti, aga pole hullu. Proovi uuesti!")
+                                messagebox.showinfo(message="Siin on väike vihje: " + str(" ".join(uus_m2)))
+                                z.delete(0, END)
+                                j_m2 += 1
+                                g_m2 +=1
+                    raam3 = Tk()
+                    raam3.title("2 player")
+                    raam3.geometry("300x350")
+                    nupp3 = Button(raam3,text = "OK",command = luuletus3, fg="red",bg="blue")
+                    nupp3.pack()
+                    start2 = timer()
+                    z = Entry(raam3)
+                    z.pack()
+                else:
+                    i_m1+=1
+                    g_m1 = 0
+                    uus_m1 = []
+            else:
+                lisa = a[i_m1].split()
+                pikkus = len(lisa)
+                if g_m1+1 == len(lisa):
+                    messagebox.showinfo(message="Siin on sinu rida, proovi see meelde jätta: " + str(a[i_m1]))
+                    c.delete(0, END)
+                    j_m1 += 1
+                    g_m1 = g_m1
+                else:
+                    uus_m1 += [lisa[g_m1]]
+                    messagebox.showinfo(message="Läks valesti, aga pole hullu. Proovi uuesti!")
+                    messagebox.showinfo(message="Siin on väike vihje: " + str(" ".join(uus_m1)))
+                    c.delete(0, END)
+                    j_m1 += 1
+                    g_m1 +=1        
+        raam2 = Tk()
+        raam2.title("1 player")
+        raam2.geometry("300x350")
+        nupp2 = Button(raam2,text = "OK",command = luuletus2, fg="red",bg="blue").pack()
+        start1 = timer()
+        c = Entry(raam2)
+        c.pack()
+    raam = Tk()
+    raam.title("Luuletuse sisestamine")
+    raam.geometry("300x350")
+    nupp = Button(raam,text = "OK",command = luuletus, fg="red",bg="blue").pack()
+    d = Entry(raam)
+    d.pack()
+    d.place(x = 90,y=50)
+    v = Entry(raam)
+    v.pack()
+    v.place(x = 90, y=65)
+    t = Text(raam, width=30,height=10)
+    t.place(x=30,y=80)
+
+uus_e =  []
+g_e = 0
+i_e = 0
+j_e = 0
+uus_m1 =  []
+g_m1 = 0
+i_m1 = 0
+j_m1 = 0
+uus_m2 =  []
+g_m2 = 0
+i_m2 = 0
+j_m2 = 0  
+valik = Tk()
+valik.title("Vali mode")
+valik.geometry("300x350")
+educational = Button(valik,text = "Educational",command = õp, fg ="red", bg="white", padx=30,pady=30)
+educational.pack()
+educational.place(x= 90,y=45)
+mäng = Button(valik,text = "Mäng",command=män, fg ="red",bg="white", padx=46,pady=30)
+mäng.pack()
+mäng.place(x=90,y=150)
+
+
