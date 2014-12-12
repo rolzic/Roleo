@@ -10,11 +10,12 @@ def õp():
         a = t.get(1.0,END)
         a = str(a.strip())
         a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
-        .replace("(","").replace(")","").replace("-","").replace(";","")
+        .replace("(","").replace(")","").replace("-","").replace(";","").replace("\t","")
         a = a.lower()
         a = a.split("\n")
         print(a)
-        print(nimi)
+        messagebox.showinfo(message="Vaata korra veel üle oma luuletuse!")
+        messagebox.showinfo(message=t.get(1.0,END))
         raam.destroy()
         def luuletus2():
             global i_e
@@ -24,10 +25,9 @@ def õp():
             b = c.get()
             b = str(b.strip())
             b = b.replace(",","").replace(".","").replace("!","").replace(":","")\
-            .replace("(","").replace(")","").replace("-","").replace(";","")
+            .replace("(","").replace(")","").replace("-","").replace(";","").replace("\t","")
             b = b.lower()
-            print(b)
-            if a[i_e] == b:
+            if a[i_e].strip() == b:
                 messagebox.showinfo(message="Väga tubli")
                 c.delete(0, END)
                 if i_e+1 == len(a):
@@ -106,10 +106,12 @@ def män():
         a = t.get(1.0,END)
         a = str(a.strip())
         a = a.replace(",","").replace(".","").replace("!","").replace(":","")\
-        .replace("(","").replace(")","").replace("-","").replace(";","")
+        .replace("(","").replace(")","").replace("-","").replace(";","").replace("\t","")
         a = a.lower()
         a = a.split("\n")
-        print(a)
+        messagebox.showinfo(message="Korrake üle oma teksti!")
+        messagebox.showinfo(message=t.get(1.0,END))
+        messagebox.showinfo(message="Edu!")
         raam.destroy()
         def luuletus2():
             global i_m1
@@ -119,10 +121,9 @@ def män():
             esimene = c.get()
             esimene = str(esimene.strip())
             esimene = esimene.replace(",","").replace(".","").replace("!","").replace(":","")\
-            .replace("(","").replace(")","").replace("-","").replace(";","")
+            .replace("(","").replace(")","").replace("-","").replace(";","").replace("\t","")
             esimene = esimene.lower()
-            print(esimene)
-            if a[i_m1] == esimene:
+            if a[i_m1].strip() == esimene:
                 messagebox.showinfo(message="Õigesti")
                 c.delete(0, END)
                 if i_m1+1 == len(a):
@@ -144,10 +145,9 @@ def män():
                         teine = z.get()
                         teine = str(teine.strip())
                         teine = teine.replace(",","").replace(".","").replace("!","").replace(":","")\
-                        .replace("(","").replace(")","").replace("-","").replace(";","")
+                        .replace("(","").replace(")","").replace("-","").replace(";","").replace("\t","")
                         teine = teine.lower()
-                        print(teine)
-                        if a[i_m2] == teine:
+                        if a[i_m2].strip() == teine:
                             messagebox.showinfo(message="Õigesti")
                             z.delete(0, END)
                             if i_m2+1 == len(a):
@@ -250,10 +250,9 @@ def män():
                         teine = z.get()
                         teine = str(teine.strip())
                         teine = teine.replace(",","").replace(".","").replace("!","").replace(":","")\
-                        .replace("(","").replace(")","").replace("-","").replace(";","")
+                        .replace("(","").replace(")","").replace("-","").replace(";","").replace("\t","")
                         teine = teine.lower()
-                        print(teine)
-                        if a[i_m2] == teine:
+                        if a[i_m2].strip() == teine:
                             messagebox.showinfo(message="Õigesti")
                             z.delete(0, END)
                             if i_m2+1 == len(a):
