@@ -170,8 +170,13 @@ def män():
                                     messagebox.showinfo(message="Võitis: " + player2)
                                     raam3.destroy()
                                 elif j_m1 == j_m2:
-                                    messagebox.showinfo(message="Jäite viiki")
-                                    raam3.destroy()
+                                    if x< h:                                        
+                                        messagebox.showinfo(message="Võitis: " + player2)
+                                        raam3.destroy()
+                                    else:
+                                        messagebox.showinfo(message="Võitis: " + player1)
+                                        raam3.destroy()
+                                        
                                 else:
                                     messagebox.showinfo(message="Võitis: " + player1)
                                     raam3.destroy()
@@ -200,8 +205,13 @@ def män():
                                     messagebox.showinfo(message="Võitis: " + player2)
                                     raam3.destroy()
                                 elif j_m1 == j_m2:
-                                    messagebox.showinfo(message="Jäite viiki")
-                                    raam3.destroy()
+                                    if x< h:                                        
+                                        messagebox.showinfo(message="Võitis: " + player2)
+                                        raam3.destroy()
+                                    else:
+                                        messagebox.showinfo(message="Võitis: " + player1)
+                                        raam3.destroy()
+                                        
                                 else:
                                     messagebox.showinfo(message="Võitis: " + player1)
                                     raam3.destroy()
@@ -275,8 +285,13 @@ def män():
                                     messagebox.showinfo(message="Võitis: " + player2)
                                     raam3.destroy()
                                 elif j_m1 == j_m2:
-                                    messagebox.showinfo(message="Jäite viiki")
-                                    raam3.destroy()
+                                    if x< h:                                        
+                                        messagebox.showinfo(message="Võitis: " + player2)
+                                        raam3.destroy()
+                                    else:
+                                        messagebox.showinfo(message="Võitis: " + player1)
+                                        raam3.destroy()
+                                        
                                 else:
                                     messagebox.showinfo(message="Võitis: " + player1)
                                     raam3.destroy()
@@ -305,8 +320,13 @@ def män():
                                     messagebox.showinfo(message="Võitis: " + player2)
                                     raam3.destroy()
                                 elif j_m1 == j_m2:
-                                    messagebox.showinfo(message="Jäite viiki")
-                                    raam3.destroy()
+                                    if x< h:                                        
+                                        messagebox.showinfo(message="Võitis: " + player2)
+                                        raam3.destroy()
+                                    else:
+                                        messagebox.showinfo(message="Võitis: " + player1)
+                                        raam3.destroy()
+                                        
                                 else:
                                     messagebox.showinfo(message="Võitis: " + player1)
                                     raam3.destroy()
